@@ -1,7 +1,13 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
+import { defineConfig ,loadEnv } from 'vite'
+import createVitePlugins  from './config/vite/plugins'
+import qiankun from 'vite-plugin-qiankun';
+const useDevMode = true;
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()]
+  plugins: createVitePlugins(),
+  resolve: {
+    alias: {
+
+    }
+  },
 })

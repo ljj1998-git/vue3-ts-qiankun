@@ -5,10 +5,10 @@ import App from './App.vue';
 // 注册子应用
 registerMicroApps([
   {
-    name: 'child1',
-    entry: '//localhost:8081',
-    container: '#yourContainer',
-    activeRule: '/child/child1', // 子应用触发规则（路径）
+    name: 'vue3_system',
+    entry: '//localhost:3001',
+    container: '#vue3_system',
+    activeRule: '/vue3_system', // 子应用触发规则（路径）
   },
 ]);
 // 开启服务
