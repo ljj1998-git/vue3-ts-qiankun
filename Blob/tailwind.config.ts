@@ -11,6 +11,15 @@ export default defineConfig({
         },
       },
     },
+    height: {
+      header: "60px",
+    },
+    backgroundImage: {
+      header: "url('./src/assets/images/bg.png')",
+     },
+     fontFamily: {
+      header: ['ysbz'],
+    },
   },
   plugins: [formsPlugin],
 });
