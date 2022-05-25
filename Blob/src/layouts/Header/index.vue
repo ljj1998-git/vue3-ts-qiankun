@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-console.log(55);
+import { ref } from 'vue';
 
+const isShow = ref(false);
 </script>
 
 <template>
-  <div class="w-full h-header bg-gray-500">
-    123
-  </div>
+  <div v-if="isShow" class="w-full h-header bg-gray-500">123</div>
 </template>

@@ -14,9 +14,10 @@ export default defineConfig({
     },
     height: {
       header: '60px',
+      '100%': '100%',
     },
     backgroundImage: {
-      header: "url('./src/assets/images/bg.png')",
+      header: "url('./src/assets/images/bg1.jpeg')",
     },
     fontFamily: {
       header: ['ysbz'],

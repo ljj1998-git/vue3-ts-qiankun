@@ -20,10 +20,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  plugins: [
-    'vue',
-    '@typescript-eslint',
-  ],
+  plugins: ['vue', '@typescript-eslint'],
   rules: {
     // 'vue/comment-directive': 0, //这句不能少不然报错
     'array-bracket-spacing': ['error', 'never'], // 是否允许非空数组里面有多余的空格
