@@ -1,8 +1,16 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import { getPlugins } from "./src/plugins";
+import { defineConfig } from 'vite';
+import { createVitePlugins } from './config/plugins/index';
+
+const path = require('path');
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), ...getPlugins()],
+  plugins: createVitePlugins(),
+  resolve: {
+    // 配置路径别名
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@images': path.resolve(__dirname, './src/assets/images'),
+    },
+  },
 });
