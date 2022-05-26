@@ -35,6 +35,8 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['off'],
     'implicit-arrow-linebreak': ['off'],
     'vue/multi-word-component-names': 'off',
+    'import/order': 'off',
+    'vue/max-attributes-per-line': 'off',
     // 'accessor-pairs': 'off', // 在对象中使用getter/setter
     // 'block-scoped-var': 'off', // 块语句中使用var
     // 'callback-return': 'warn', // 避免多次调用回调什么的
