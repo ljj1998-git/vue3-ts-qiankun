@@ -2,7 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
   },
   "include": [
     "vite.config.ts",
@@ -11,6 +11,6 @@
     "./config/plugins/vite-plugin-mock.ts",
     "./config/plugins/vite-plugin-pages.ts",
     "./config/plugins/vite-plugin-vue-layouts.ts",
-    "./config/plugins/vite-plugin-windicss.ts",
+    "./config/plugins/vite-plugin-windicss.ts"
   ]
 }

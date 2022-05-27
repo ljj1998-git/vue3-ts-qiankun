@@ -37,6 +37,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'import/order': 'off',
     'vue/max-attributes-per-line': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
     // 'accessor-pairs': 'off', // 在对象中使用getter/setter
     // 'block-scoped-var': 'off', // 块语句中使用var
     // 'callback-return': 'warn', // 避免多次调用回调什么的
@@ -160,7 +161,7 @@ module.exports = {
     // 'no-undef-init': 'error', // 变量初始化时不能直接给它赋值为undefined
     // 'no-undefined': 'error', // 不能使用undefined
     // 'no-unexpected-multiline': 'error', // 避免多行表达式
-    // 'no-underscore-dangle': 'warn', // 标识符不能以_开头或结尾
+    'no-underscore-dangle': 'off', // 标识符不能以_开头或结尾
     // 'no-unneeded-ternary': 'error', // 禁止不必要的嵌套 var isYes = answer === 'warn' ? true : false;
     // 'no-unreachable': 'error', // 不能有无法执行的代码
     'no-unused-expressions': 'error', // 禁止无用的表达式
@@ -176,7 +177,7 @@ module.exports = {
     // 'operator-assignment': ['off', 'always'], // 赋值运算符 += -=什么的
     // 'operator-linebreak': ['error', 'after'], // 换行时运算符在行尾还是行首
     // 'padded-blocks': 'off', // 块语句内行首行尾是否要空行
-    // 'prefer-const': 'off', // 首选const
+    'prefer-const': 'off', // 首选const
     // 'prefer-spread': 'off', // 首选展开运算
     // 'prefer-reflect': 'off', // 首选Reflect的方法
     // 'quotes': ['warn', 'single'], // 引号类型 `` '' ''
