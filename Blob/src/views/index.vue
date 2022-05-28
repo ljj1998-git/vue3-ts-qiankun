@@ -8,16 +8,13 @@ onMounted(() => {
   const { $refs } = (getCurrentInstance() as any).proxy;
   width.value = `${$refs.classfy.offsetWidth / 2}px`;
   console.log(width);
+  window.scrollTo(0, 500);
 });
 </script>
 
 <template>
   <div class="box bg-header bg-cover w-full">
-    <div
-      class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl"
-    >
-      今天也是充满希望的一天！
-    </div>
+    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">今天也是充满希望的一天！</div>
     <div ref="classfy" class="animate cursor-pointer text-white font-header text-5xl">
       开启新的一天
       <down-outlined />
@@ -25,9 +22,7 @@ onMounted(() => {
   </div>
 
   <div>
-    <div v-for="item in 100" :key="item">
-      很多内容
-    </div>
+    <div v-for="item in 100" :key="item">很多内容</div>
   </div>
 </template>
 
@@ -39,7 +34,7 @@ body,
   height: 100%;
   .animate {
     position: absolute;
-    left:calc(50% - v-bind(width));
+    left: calc(50% - v-bind(width));
     bottom: 2rem;
     -webkit-animation: bounce-down 1.7s linear infinite;
     animation: bounce-down 1.7s linear infinite;
