@@ -11,16 +11,32 @@ export default defineConfig({
           100: '#096',
         },
       },
-    },
-    height: {
-      header: '60px',
-      '100%': '100%',
-    },
-    backgroundImage: {
-      header: "url('./src/assets/images/bg1.jpeg')",
-    },
-    fontFamily: {
-      header: ['ysbz'],
+      width: {
+        full: '100%',
+        md: '615px',
+        lg: '820px',
+        xl: '1024px',
+        '2xl': '1228px',
+      },
+      height: {
+        header: '60px',
+        '100%': '100%',
+      },
+      backgroundColor: {
+        headerColor: '#3D4450',
+      },
+      backgroundImage: {
+        header: "url('./src/assets/images/bg1.jpeg')",
+      },
+      lineHeight: {
+        header: '60px',
+      },
+      fontFamily: {
+        header: ['ysbz'],
+      },
+      textColor: {
+        header: '#dfdfdf',
+      },
     },
   },
   plugins: [formsPlugin],

@@ -7,12 +7,7 @@ module.exports = {
     // 使用setup语法糖
     'vue/setup-compiler-macros': true,
   },
-  extends: [
-    'airbnb-base',
-    'plugin:vue/vue3-essential',
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['airbnb-base', 'plugin:vue/vue3-essential', 'plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended'],
   // 这句不能少
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -38,6 +33,9 @@ module.exports = {
     'import/order': 'off',
     'vue/max-attributes-per-line': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
+    'object-curly-newline': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/html-self-closing': 'off',
     // 'accessor-pairs': 'off', // 在对象中使用getter/setter
     // 'block-scoped-var': 'off', // 块语句中使用var
     // 'callback-return': 'warn', // 避免多次调用回调什么的
