@@ -5,12 +5,27 @@ import { useWindowSize, useResizeObserver, useWindowScroll } from '@vueuse/core'
 import { scrollAnimation } from '@utils/scroll';
 import KCard from '@/components/KCard.vue';
 
+import { getTest } from '@/apis/demo';
+
 export default defineComponent({
   components: {
     DownOutlined,
     KCard,
   },
-  setup() {
+  async setup() {
+    interface newsListResType{
+      type: number,
+        name: string,
+        title: string,
+    }
+    let newsList:Array<newsListResType> = [];
+    console.log(newsList);
+    console.log(22);
+
+    const res = await getTest();
+    console.log(res);
+    console.log(33);
+
     // 获取页面可视区域的宽高
     const { height: currentHeight } = useWindowSize();
     // 当前页面的滚动y值
@@ -29,7 +44,6 @@ export default defineComponent({
       const entry = entries[0];
       const { width } = entry.contentRect;
       dropDownWidth.value = `${width / 2}px`;
-      console.log(dropDownWidth.value);
     });
     const handleDropDown = (): void => {
       scrollAnimation(windowY.value, currentHeight.value - 60);
@@ -47,7 +61,9 @@ export default defineComponent({
 
 <template>
   <div class="box bg-header bg-cover w-full">
-    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">今天也是充满希望的一天！</div>
+    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">
+      今天也是充满希望的一天！
+    </div>
     <div ref="dropDown" class="animate cursor-pointer text-white font-header text-5xl" @click="handleDropDown">
       开启新的一天
       <down-outlined />
@@ -57,14 +73,30 @@ export default defineComponent({
   <div class="flex md:w-md lg:w-lg xl:w-xl 2xl:w-2xl m-auto mt-4">
     <div class="w-3/4 mr-4">
       <k-card title-text="最新动态">
-        <div v-for="item in 6" :key="item"></div>
+        <template #titleRight>
+          123
+        </template>
+        <template #content>
+          <div class="flex flex-wrap">
+            <div v-for="item in 6" :key="item" class="border w-1/3">
+              <div class="flex justify-between items-center">
+                <div class=""></div>
+                <div class=""></div>
+              </div>
+            </div>
+          </div>
+        </template>
       </k-card>
     </div>
     <div class="w-1/4">
-      <K-card title-text="个人资料"> 321 </K-card>
+      <K-card title-text="个人资料">
+        321
+      </K-card>
     </div>
   </div>
-  <div v-for="item in 100" :key="item">很多内容</div>
+  <div v-for="item in 100" :key="item">
+    很多内容
+  </div>
 </template>
 
 <style lang="scss">

@@ -5,7 +5,14 @@ import Header from './Header/index.vue';
 <template>
   <Header />
   <div class="box">
-    <router-view />
+    <suspense>
+      <template #default>
+        <router-view />
+      </template>
+      <template #fallback>
+        <div>加载中...</div>
+      </template>
+    </suspense>
   </div>
 </template>
 

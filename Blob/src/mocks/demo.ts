@@ -1,41 +1,39 @@
-import { MockMethod } from 'vite-plugin-mock';
-
-const arr: any = [];
-for (let index = 0; index < 20; index++) {
-  arr.push({
-    customer_name: 'wade',
-    status_text: '登录成功',
-    os: 'Windows 10',
-    browser: 'Chrome(99.0.4844.51)',
-    ip: '192.168.9.110',
-    created: '2021-12-14 10:41:02',
-    location: '局域网 局域网',
-  });
-}
-
-const logList = {
-  total: 31,
-  page: 1,
-  page_size: 20,
-  list: arr,
-};
-
-const statusList = {
-  data: [
-    { label: '全部', value: 0 },
-    { label: '待审核', value: 1 },
-  ],
-};
+import Mock from 'mockjs';
 
 export default [
+  // GetUserInfo
   {
-    url: '/mock/api/getList',
-    method: 'post',
-    response: () => logList,
+    url: '/upms/user/info',
+    type: 'get',
+    response: () => ({
+      code: 401,
+      message: '成功',
+      data: [{
+        type: 0,
+        name: '德玛西亚',
+        title: '11',
+      }],
+    }),
   },
+  // GetToken
   {
-    url: '/mock/api/getStatusList',
-    method: 'get',
-    response: () => statusList,
+    url: '/auth/oauth/token',
+    type: 'post',
+    response: (option: any) => {
+      const $name = JSON.parse(option.body).name;
+      if ($name) {
+        return Mock.mock({
+          code: 401,
+          message: '成功',
+          data: {
+            name: 'testToken',
+          },
+        });
+      }
+      return Mock.mock({
+        code: 400,
+        message: '未提交参数',
+      });
+    },
   },
-] as MockMethod[];
+];

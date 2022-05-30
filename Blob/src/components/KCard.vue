@@ -6,17 +6,25 @@ export default defineComponent({
   props: {
     titleText: { type: String },
   },
+  setup() {
+    return {
+      // titleText,
+    };
+  },
 });
 </script>
 
 <template>
   <div class="bg-white p-4 w-auto">
-    <div class="flex border-b">
-      <div class="mb-4 pl-4 font-bold text-xl border-l-4 border-blue-600">
+    <div v-if="titleText" class="flex pb-4 border-b justify-between items-center">
+      <div class="pl-4 font-bold text-xl border-l-4 border-blue-600">
         {{ titleText }}
       </div>
+      <div>
+        <slot name="titleRight" />
+      </div>
     </div>
-    <slot />
+    <slot name="content" />
   </div>
 </template>
 

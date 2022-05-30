@@ -36,6 +36,7 @@ module.exports = {
     'object-curly-newline': 'off',
     'vue/require-default-prop': 'off',
     'vue/html-self-closing': 'off',
+    'no-restricted-syntax': 'off',
     // 'accessor-pairs': 'off', // 在对象中使用getter/setter
     // 'block-scoped-var': 'off', // 块语句中使用var
     // 'callback-return': 'warn', // 避免多次调用回调什么的

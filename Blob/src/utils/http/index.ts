@@ -1,61 +1,60 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { showMessage } from './status';
-import { IResponse } from './type';
+import axios from 'axios';
+import { notification } from 'ant-design-vue';
+// import { getToken } from '@/utils/auth'
 
-// 如果请求话费了超过 `timeout` 的时间，请求将被中断
-axios.defaults.timeout = 5000;
+export const request = (options:any) => new Promise((resolve, reject) => {
+  // create an axios instance
+  const service = axios.create({
+    // baseURL: process.env.BASE_API, // api 的 base_url
+    baseURL: '/api',
+    timeout: 60000, // request timeout
+  });
 
-console.log(import.meta.env.BASE_URL);
+  // request interceptor
+  service.interceptors.request.use(
+    (config:any) => {
+      let token:string = '';// 此处换成自己获取回来的token，通常存在在cookie或者store里面
+      if (token) {
+        // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
+        config.headers['X-Token'] = token;
 
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: `${import.meta.env.BASE_URL}`,
+        config.headers.Authorization = +token;
+      }
+      return config;
+    },
+    error => {
+      // Do something with request error
+      console.log('出错啦', error); // for debug
+      Promise.reject(error);
+    },
+  );
+
+  // response interceptor
+  service.interceptors.response.use(
+    (response:any) => {
+      const errorCode = response?.data?.errorCode;
+      console.log(errorCode, response);
+
+      return response.data;
+    },
+    error => {
+      console.log(`err${error}`); // for debug
+      notification.error({
+        message: '错了',
+        description:
+          'GG',
+      });
+      return Promise.reject(error);
+    },
+  );
+  // 请求处理
+  service(options)
+    .then((res) => {
+      resolve(res);
+    })
+    .catch((error) => {
+      reject(error);
+    });
 });
 
-// axios实例拦截响应
-axiosInstance.interceptors.response.use(
-  (response: AxiosResponse) => {
-    if (response.status === 200) {
-      return response;
-    }
-    showMessage(response.status);
-    return response;
-  },
-  // 请求失败
-  (error: any) => {
-    const { response } = error;
-    if (response) {
-      showMessage(response.status);
-      return Promise.reject(response.data);
-    }
-    showMessage('网络连接异常,请稍后再试!');
-  },
-);
-
-// axios实例拦截请求
-axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => config,
-  (error: any) => Promise.reject(error),
-);
-
-const request = <T = any>(config: AxiosRequestConfig): Promise<T> => {
-  const conf = config;
-  return new Promise((resolve) => {
-    axiosInstance
-      .request<any, AxiosResponse<IResponse>>(conf)
-      .then((res: AxiosResponse<IResponse>) => {
-        const { data: { result } } = res;
-        resolve(result as T);
-      });
-  });
-};
-
-export function get<T = any>(config: AxiosRequestConfig): Promise<T> {
-  return request({ ...config, method: 'GET' });
-}
-
-export function post<T = any>(config: AxiosRequestConfig): Promise<T> {
-  return request({ ...config, method: 'POST' });
-}
-
 export default request;
-export type { AxiosInstance, AxiosResponse };
