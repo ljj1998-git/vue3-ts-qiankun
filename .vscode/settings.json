@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./BlobSever/app/configs",
+        "./BlobSever/app/models",
+        "./BlobSever/app/controller/routes"
+    ]
+}
