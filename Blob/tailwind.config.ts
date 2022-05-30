@@ -7,9 +7,7 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        teal: {
-          100: '#096',
-        },
+        primary: '#0089ff',
       },
       width: {
         full: '100%',
@@ -39,5 +37,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [formsPlugin],
+  plugins: [formsPlugin, require('@tailwindcss/line-clamp')],
 });

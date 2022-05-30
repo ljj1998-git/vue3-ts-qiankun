@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DownOutlined } from '@ant-design/icons-vue';
+import { DownOutlined, DashboardOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 import { useWindowSize, useResizeObserver, useWindowScroll } from '@vueuse/core';
 import { scrollAnimation } from '@utils/scroll';
@@ -10,15 +10,16 @@ import { getTest } from '@/apis/demo';
 export default defineComponent({
   components: {
     DownOutlined,
+    DashboardOutlined,
     KCard,
   },
   async setup() {
-    interface newsListResType{
-      type: number,
-        name: string,
-        title: string,
+    interface newsListResType {
+      type: number;
+      name: string;
+      title: string;
     }
-    let newsList:Array<newsListResType> = [];
+    let newsList: Array<newsListResType> = [];
     console.log(newsList);
     console.log(22);
 
@@ -61,9 +62,7 @@ export default defineComponent({
 
 <template>
   <div class="box bg-header bg-cover w-full">
-    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">
-      今天也是充满希望的一天！
-    </div>
+    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">今天也是充满希望的一天！</div>
     <div ref="dropDown" class="animate cursor-pointer text-white font-header text-5xl" @click="handleDropDown">
       开启新的一天
       <down-outlined />
@@ -73,30 +72,29 @@ export default defineComponent({
   <div class="flex md:w-md lg:w-lg xl:w-xl 2xl:w-2xl m-auto mt-4">
     <div class="w-3/4 mr-4">
       <k-card title-text="最新动态">
-        <template #titleRight>
-          123
-        </template>
+        <template #titleRight> 123 </template>
         <template #content>
           <div class="flex flex-wrap">
-            <div v-for="item in 6" :key="item" class="border w-1/3">
+            <div v-for="item in 6" :key="item" class="border w-1/3 h-40 p-4 box-border">
               <div class="flex justify-between items-center">
-                <div class=""></div>
-                <div class=""></div>
+                <div class="rounded-3xl px-3 py-1 text-white text-sm" :style="'background-color:#0089ff'">生活分享</div>
+                <div>
+                  <DashboardOutlined />
+                  2022-5-30
+                </div>
               </div>
+              <div class="mt-2 font-bold truncate">这是一个标题这是一个标题这是一个标题这是一个标题</div>
+              <div class="text-sm line-clamp-2">这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容</div>
             </div>
           </div>
         </template>
       </k-card>
     </div>
     <div class="w-1/4">
-      <K-card title-text="个人资料">
-        321
-      </K-card>
+      <K-card title-text="个人资料"> 321 </K-card>
     </div>
   </div>
-  <div v-for="item in 100" :key="item">
-    很多内容
-  </div>
+  <div v-for="item in 100" :key="item">很多内容</div>
 </template>
 
 <style lang="scss">

@@ -7,8 +7,9 @@ export default defineComponent({
     titleText: { type: String },
   },
   setup() {
+    const circleLists: Array<string> = ['#ff5d58 ', '#ffb528', '#26c73d'];
     return {
-      // titleText,
+      circleLists,
     };
   },
 });
@@ -20,8 +21,8 @@ export default defineComponent({
       <div class="pl-4 font-bold text-xl border-l-4 border-blue-600">
         {{ titleText }}
       </div>
-      <div>
-        <slot name="titleRight" />
+      <div class="flex">
+        <div v-for="item in circleLists" :key="item" class="rounded-full w-4 h-4 mx-1" :style="'background-color:' + item"></div>
       </div>
     </div>
     <slot name="content" />
