@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DownOutlined, DashboardOutlined, HeartOutlined, EyeOutlined } from '@ant-design/icons-vue';
+import { DownOutlined, DashboardOutlined, HeartOutlined, EyeOutlined, UserOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 import { useWindowSize, useResizeObserver, useWindowScroll, MaybeElementRef } from '@vueuse/core';
 import { scrollAnimation } from '@utils/scroll';
@@ -13,6 +13,7 @@ export default defineComponent({
     DashboardOutlined,
     HeartOutlined,
     EyeOutlined,
+    UserOutlined,
     KCard,
   },
   async setup() {
@@ -68,9 +69,7 @@ export default defineComponent({
 
 <template>
   <div class="box bg-header bg-cover w-full">
-    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">
-      今天也是充满希望的一天！
-    </div>
+    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">今天也是充满希望的一天！</div>
     <div ref="dropDown" class="animate cursor-pointer text-white font-header text-5xl" @click="handleDropDown">
       开启新的一天
       <down-outlined />
@@ -84,26 +83,20 @@ export default defineComponent({
           <div class="grid grid-cols-3 gap-4">
             <div v-for="item in 6" :key="item" class="border h-42 p-4 box-border cursor-pointer hover:animate-setShadow">
               <div class="flex justify-between items-center">
-                <div class="rounded-3xl px-3 py-1 text-white text-sm bg-primary">
-                  生活分享
-                </div>
+                <div class="rounded-3xl px-3 py-1 text-white text-sm bg-primary">生活分享</div>
                 <div>
                   <DashboardOutlined />
                   2022-5-30
                 </div>
               </div>
-              <div class="my-2 font-bold truncate">
-                这是一个标题这是一个标题这是一个标题这是一个标题
-              </div>
-              <div class="text-sm line-clamp-2">
-                这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
-              </div>
+              <div class="my-2 font-bold truncate hover:animate-changeColor cursor-pointer">这是一个标题这是一个标题这是一个标题这是一个标题</div>
+              <div class="text-sm line-clamp-2">这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容</div>
               <div class="h-4 my-2 flex flex-row-reverse gap-4">
-                <div class="hover:animate-changeColor cursor-pointer">
+                <div>
                   <eye-outlined class="mr-1" />
                   <span>652</span>
                 </div>
-                <div class="hover:animate-changeColor cursor-pointer">
+                <div>
                   <heart-outlined class="mr-1" />
                   <span>652</span>
                 </div>
@@ -112,16 +105,34 @@ export default defineComponent({
           </div>
         </template>
       </k-card>
+      <k-card class="mt-4">
+        <template #content>
+          <a-tabs v-model:activeKey="activeKey">
+            <a-tab-pane key="1" tab="Tab 1"> Content of Tab Pane 1 </a-tab-pane>
+            <a-tab-pane key="2" tab="Tab 2" force-render> Content of Tab Pane 2 </a-tab-pane>
+            <a-tab-pane key="3" tab="Tab 3"> Content of Tab Pane 3 </a-tab-pane>
+          </a-tabs>
+        </template>
+      </k-card>
     </div>
     <div class="w-1/4">
-      <K-card title-text="个人资料">
-        321
-      </K-card>
+      <k-card>
+        <template #content>
+          <div class="bg-authorBg bg-cover bg-50%">
+            <div class="text-white"><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+            <div><span>职业:</span><span>一个小小的前端工程师</span></div>
+          </div>
+        </template>
+      </k-card>
     </div>
   </div>
-  <div v-for="item in 100" :key="item">
-    很多内容
-  </div>
+  <div v-for="item in 100" :key="item">很多内容</div>
 </template>
 
 <style lang="scss">

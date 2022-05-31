@@ -29,6 +29,11 @@ export default defineConfig({
       },
       backgroundImage: {
         header: "url('./src/assets/images/bg1.jpeg')",
+        authorBg: "url('./src/assets/images/authorBg.jpeg')",
+      },
+      backgroundSize: {
+        '50%': '50%',
+        16: '4rem',
       },
       lineHeight: {
         header: '60px',
