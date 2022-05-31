@@ -171,7 +171,7 @@ module.exports = {
     // 'no-var': 'off', // 禁用var，用let和const代替
     // 'no-with': 'error', // 禁用with
     // 'object-curly-spacing': ['off', 'never'], // 大括号内是否允许不必要的空格
-    // 'object-shorthand': 'off', // 强制对象字面量缩写语法
+    'object-shorthand': 'off', // 强制对象字面量缩写语法
     // 'one-var': 'warn', // 连续声明
     // 'operator-assignment': ['off', 'always'], // 赋值运算符 += -=什么的
     // 'operator-linebreak': ['error', 'after'], // 换行时运算符在行尾还是行首

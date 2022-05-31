@@ -17,7 +17,7 @@ export default defineComponent({
 
 <template>
   <div class="bg-white p-4 w-auto">
-    <div v-if="titleText" class="flex pb-4 border-b justify-between items-center">
+    <div v-if="titleText" class="flex pb-4 mb-2 border-b justify-between items-center">
       <div class="pl-4 font-bold text-xl border-l-4 border-blue-600">
         {{ titleText }}
       </div>

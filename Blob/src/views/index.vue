@@ -1,7 +1,7 @@
 <script lang="ts">
-import { DownOutlined, DashboardOutlined } from '@ant-design/icons-vue';
+import { DownOutlined, DashboardOutlined, HeartOutlined, EyeOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
-import { useWindowSize, useResizeObserver, useWindowScroll } from '@vueuse/core';
+import { useWindowSize, useResizeObserver, useWindowScroll, MaybeElementRef } from '@vueuse/core';
 import { scrollAnimation } from '@utils/scroll';
 import KCard from '@/components/KCard.vue';
 
@@ -11,6 +11,8 @@ export default defineComponent({
   components: {
     DownOutlined,
     DashboardOutlined,
+    HeartOutlined,
+    EyeOutlined,
     KCard,
   },
   async setup() {
@@ -21,11 +23,15 @@ export default defineComponent({
     }
     let newsList: Array<newsListResType> = [];
     console.log(newsList);
-    console.log(22);
 
+    interface returnData {
+      code: number;
+      message: string;
+      data: Array<any>;
+    }
     const res = await getTest();
-    console.log(res);
-    console.log(33);
+    const d: returnData = res.data;
+    console.log(d);
 
     // 获取页面可视区域的宽高
     const { height: currentHeight } = useWindowSize();
@@ -41,7 +47,7 @@ export default defineComponent({
      */
     const dropDown = ref(null);
     const dropDownWidth = ref('0px');
-    useResizeObserver(dropDown, (entries) => {
+    useResizeObserver(dropDown as unknown as MaybeElementRef, (entries) => {
       const entry = entries[0];
       const { width } = entry.contentRect;
       dropDownWidth.value = `${width / 2}px`;
@@ -62,7 +68,9 @@ export default defineComponent({
 
 <template>
   <div class="box bg-header bg-cover w-full">
-    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">今天也是充满希望的一天！</div>
+    <div class="w-1/2 text-center relative left-1/2 top-1/2 transform -translate-x-2/4 -translate-y-2/4 text-white font-header text-5xl">
+      今天也是充满希望的一天！
+    </div>
     <div ref="dropDown" class="animate cursor-pointer text-white font-header text-5xl" @click="handleDropDown">
       开启新的一天
       <down-outlined />
@@ -72,29 +80,48 @@ export default defineComponent({
   <div class="flex md:w-md lg:w-lg xl:w-xl 2xl:w-2xl m-auto mt-4">
     <div class="w-3/4 mr-4">
       <k-card title-text="最新动态">
-        <template #titleRight> 123 </template>
         <template #content>
-          <div class="flex flex-wrap">
-            <div v-for="item in 6" :key="item" class="border w-1/3 h-40 p-4 box-border">
+          <div class="grid grid-cols-3 gap-4">
+            <div v-for="item in 6" :key="item" class="border h-42 p-4 box-border cursor-pointer hover:animate-setShadow">
               <div class="flex justify-between items-center">
-                <div class="rounded-3xl px-3 py-1 text-white text-sm" :style="'background-color:#0089ff'">生活分享</div>
+                <div class="rounded-3xl px-3 py-1 text-white text-sm bg-primary">
+                  生活分享
+                </div>
                 <div>
                   <DashboardOutlined />
                   2022-5-30
                 </div>
               </div>
-              <div class="mt-2 font-bold truncate">这是一个标题这是一个标题这是一个标题这是一个标题</div>
-              <div class="text-sm line-clamp-2">这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容</div>
+              <div class="my-2 font-bold truncate">
+                这是一个标题这是一个标题这是一个标题这是一个标题
+              </div>
+              <div class="text-sm line-clamp-2">
+                这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
+              </div>
+              <div class="h-4 my-2 flex flex-row-reverse gap-4">
+                <div class="hover:animate-changeColor cursor-pointer">
+                  <eye-outlined class="mr-1" />
+                  <span>652</span>
+                </div>
+                <div class="hover:animate-changeColor cursor-pointer">
+                  <heart-outlined class="mr-1" />
+                  <span>652</span>
+                </div>
+              </div>
             </div>
           </div>
         </template>
       </k-card>
     </div>
     <div class="w-1/4">
-      <K-card title-text="个人资料"> 321 </K-card>
+      <K-card title-text="个人资料">
+        321
+      </K-card>
     </div>
   </div>
-  <div v-for="item in 100" :key="item">很多内容</div>
+  <div v-for="item in 100" :key="item">
+    很多内容
+  </div>
 </template>
 
 <style lang="scss">

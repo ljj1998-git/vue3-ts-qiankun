@@ -13,14 +13,20 @@ watch(y, (newData) => {
   <transition name="fade">
     <div v-if="isShow" ref="el" class="fixed z-50 w-full h-header bg-headerColor">
       <div class="flex justify-between h-full md:w-md lg:w-lg xl:w-xl 2xl:w-2xl m-auto">
-        <div class="text-header text-2xl leading-header">Blog</div>
+        <div class="text-header text-2xl leading-header">
+          Blog
+        </div>
         <nav class="menu">
           <ul>
             <li>
-              <a href="#">首页</a>
+              <router-link :to="{path:'/'}">
+                首页
+              </router-link>
             </li>
             <li>
-              <a href="#">生活分享</a>
+              <router-link :to="{ path: '/RecordLife' }">
+                生活分享
+              </router-link>
             </li>
             <li>
               <a href="#">技分分享</a>
