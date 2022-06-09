@@ -12,3 +12,10 @@ class Navbar(models.Model):
     name = models.CharField(max_length=30)
     author = models.CharField(max_length=30, blank=True, null=True)
     number = models.CharField(max_length=30, blank=True, null=True)
+
+
+class User(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
+    password = models.CharField(max_length=30)
+    
