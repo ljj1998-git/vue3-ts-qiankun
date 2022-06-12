@@ -1,10 +1,8 @@
-import React from 'react'
-import * as ReactDOMClient from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Layout from "./src/layouts/default.jsx";
+import "antd/dist/antd.css";
+import "./src/assets/css/default.less";
 
-const myDiv = React.createElement('div',{title:'德玛西亚'},'吨吨吨')
-
-const root = ReactDOMClient.createRoot(document.getElementById('app')); 
-// Initial render: Render an element to the root. 
-root.render(myDiv); 
-
-console.log(55);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Layout />);
