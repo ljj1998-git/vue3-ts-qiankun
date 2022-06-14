@@ -1,21 +1,14 @@
 <template>
 	<view class="content">
-		<u-tabbar
-			:value="value"
-			@change="name => value = name"
-			:fixed="true"
-			:placeholder="true"
-			:safeAreaInsetBottom="true"
-		>
-			<u-tabbar-item text="首页" icon="home" ></u-tabbar-item>
-			<u-tabbar-item text="放映厅" icon="photo" ></u-tabbar-item>
-			<u-tabbar-item text="直播" icon="play-right" ></u-tabbar-item>
-			<u-tabbar-item text="我的" icon="account" ></u-tabbar-item>
-		</u-tabbar>
+		<view class="title">
+			123
+		</view>
+		<Tabbar></Tabbar>
 	</view>
 </template>
 
 <script>
+	import Tabbar from '../../components/Tabbar.vue'
 	export default {
 		data() {
 			return {
@@ -23,6 +16,7 @@
 				value: 0,
 			}
 		},
+		components:{Tabbar},
 		onLoad() {
 
 		},
@@ -34,30 +28,13 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		.title{
+			height: 750rpx;
+			background-color: $uni-color-primary;
+			border-radius: 0 0 50rpx 50rpx;
+		}
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
 </style>

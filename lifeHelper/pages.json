@@ -5,12 +5,22 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},{
+			"path": "pages/examination/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},{
+			"path": "pages/my/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#409EFF",
 		"backgroundColor": "#F8F8F8"
 	}
 }
