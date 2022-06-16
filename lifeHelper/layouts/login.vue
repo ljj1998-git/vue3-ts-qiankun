@@ -15,12 +15,12 @@
 					<view class="box_text box_tel">
 						<u-icon name="account-fill" color="#3eb9f0" size="28"></u-icon>
 						<view class="text">账号</view>
-						<u--input class='input' border="none"></u--input>
+						<u--input class='input' border="none" v-model="form.tel"></u--input>
 					</view>
 					<view class="box_text box_password">
 						<u-icon name="lock-fill" color="#3eb9f0" size="28"></u-icon>
 						<view class="text">密码</view>
-						<input class='input' :type="passwordType" ></input>
+						<input class='input' :type="passwordType" v-model="form.password"></input>
 						<u-icon :name="eyeName" color="#3eb9f0" size="28" @click="changePassWordType"></u-icon>
 					</view>
 				</u-col>
@@ -38,7 +38,11 @@
 	export default {
 		data() {
 			return {
-				passwordStatus:true
+				passwordStatus:true,
+				form:{
+					tel:'',
+					password:''
+				}
 			}
 		},
 		computed:{

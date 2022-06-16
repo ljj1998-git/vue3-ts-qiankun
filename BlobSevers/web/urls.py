@@ -5,7 +5,7 @@ from web import views
 
 
 router = DefaultRouter()
-router.register('books', views.BooksViewSet)
+router.register('user', views.Login)
 
 urlpatterns = [
     path('', include(router.urls)),
