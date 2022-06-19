@@ -388,7 +388,15 @@ var render = function() {
                 [
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
+                    {
+                      staticClass: _vm._$g(21, "sc"),
+                      attrs: { _i: 21 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
                     [_vm._v("登录")]
                   )
                 ],

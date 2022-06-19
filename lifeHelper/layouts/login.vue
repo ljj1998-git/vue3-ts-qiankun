@@ -27,7 +27,7 @@
 			</u-row>
 			<u-row>
 				<u-col span="12">
-					<view class="box_login">登录</view>
+					<view class="box_login" @click="handleLogin">登录</view>
 				</u-col>
 			</u-row>
 		</view>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+	import {toLogin} from '@/apis/modules/login.js'
 	export default {
 		data() {
 			return {
@@ -56,6 +57,12 @@
 		methods:{
 			changePassWordType(){
 				this.passwordStatus = !this.passwordStatus
+			},
+			handleLogin(){
+				console.log(66);
+				toLogin({tel:12777773,password:7777777}).then(res=>{
+					console.log(res);
+				})
 			}
 		}
 	}

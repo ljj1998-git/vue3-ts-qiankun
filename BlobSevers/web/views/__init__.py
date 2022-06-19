@@ -1,1 +1,1 @@
-from .loginView import *
+from .loginModelViewSet import *

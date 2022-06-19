@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'rest_framework',
-    'web.apps.WebConfig'
+    'web.apps.WebConfig',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         'HOST': '112.124.37.144',
         'PORT': 3306,
         'USER': 'root',
-        'PASSWORD':'L_jj1998'
+        'PASSWORD': 'L_jj1998'
     }
 }
 
