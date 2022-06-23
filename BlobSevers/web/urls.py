@@ -21,5 +21,5 @@ urlpatterns = [
 ]
 
 router = SimpleRouter()
-router.register('login', views.LoginModelViewSet, 'login')
+router.register('loginRegister', views.LoginRegisterModelViewSet, 'loginRegister')
 urlpatterns += router.urls
