@@ -287,11 +287,9 @@ var render = function() {
                 "u-col",
                 { attrs: { _i: 4 } },
                 [
-                  _c(
-                    "uni-view",
-                    { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-                    [_vm._v("登录")]
-                  )
+                  _c("uni-view", { class: _vm._$g(5, "c"), attrs: { _i: 5 } }, [
+                    _vm._v("登录")
+                  ])
                 ],
                 1
               ),
@@ -299,11 +297,9 @@ var render = function() {
                 "u-col",
                 { attrs: { _i: 6 } },
                 [
-                  _c(
-                    "uni-view",
-                    { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-                    [_vm._v("注册")]
-                  )
+                  _c("uni-view", { class: _vm._$g(7, "c"), attrs: { _i: 7 } }, [
+                    _vm._v("注册")
+                  ])
                 ],
                 1
               )
@@ -2109,7 +2105,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../workSoftWare/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n#content[data-v-52fb6bd6] {\n  position: relative;\n}\n#content .title[data-v-52fb6bd6] {\n  height: 25vh;\n  background-color: #7733FF;\n  border-radius: 0 0 10vw 10vw;\n}\n#content .box[data-v-52fb6bd6] {\n  width: 90vw;\n  height: 70vh;\n  position: absolute;\n  left: 5vw;\n  top: 10vh;\n  background-color: #fff;\n  border-radius: 20rpx;\n  box-shadow: 0rpx 0rpx 20rpx #c8c6c6;\n}\n#content .box .box_title[data-v-52fb6bd6] {\n  text-align: center;\n  line-height: 60rpx;\n  font-size: 36rpx;\n  color: #7b92d3;\n  padding-bottom: 20rpx;\n  border-bottom: 7rpx solid #86c1fa;\n}\n#content .box .box_text[data-v-52fb6bd6] {\n  height: 120rpx;\n  border-radius: 60rpx;\n  background: #e9f7fe;\n  margin-bottom: 40rpx;\n  border: 2px solid #c4eaf5;\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  padding: 0 30rpx;\n  position: relative;\n}\n#content .box .box_text .text[data-v-52fb6bd6] {\n  box-sizing: border-box;\n  color: #adb2b3;\n  margin-right: 20rpx;\n}\n#content .box .box_text .input[data-v-52fb6bd6] {\n  width: 40vw;\n}\n#content .box .box_login[data-v-52fb6bd6] {\n  height: 100rpx;\n  text-align: center;\n  color: #fff;\n  margin: 20rpx 60rpx;\n  border-radius: 60rpx;\n  line-height: 100rpx;\n  background: linear-gradient(to right, #5cb9ec, #5a3db6);\n}\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/* 行为相关颜色 */\n/* 文字基本颜色 */\n/* 背景颜色 */\n/* 边框颜色 */\n/* 尺寸变量 */\n/* 文字尺寸 */\n/* 图片尺寸 */\n/* Border Radius */\n/* 水平间距 */\n/* 垂直间距 */\n/* 透明度 */\n/* 文章场景相关 */\n#content[data-v-52fb6bd6] {\n  position: relative;\n}\n#content .title[data-v-52fb6bd6] {\n  height: 25vh;\n  background-color: #7733FF;\n  border-radius: 0 0 10vw 10vw;\n}\n#content .box[data-v-52fb6bd6] {\n  width: 90vw;\n  height: 70vh;\n  position: absolute;\n  left: 5vw;\n  top: 10vh;\n  background-color: #fff;\n  border-radius: 20rpx;\n  box-shadow: 0rpx 0rpx 20rpx #c8c6c6;\n}\n#content .box .box_title[data-v-52fb6bd6] {\n  text-align: center;\n  line-height: 60rpx;\n  font-size: 36rpx;\n  color: #7b92d3;\n  padding-bottom: 20rpx;\n}\n#content .box .border[data-v-52fb6bd6] {\n  border-bottom: 7rpx solid #86c1fa;\n}\n#content .box .box_text[data-v-52fb6bd6] {\n  height: 120rpx;\n  border-radius: 60rpx;\n  background: #e9f7fe;\n  margin-bottom: 40rpx;\n  border: 2px solid #c4eaf5;\n  display: flex;\n  align-items: center;\n  box-sizing: border-box;\n  padding: 0 30rpx;\n  position: relative;\n}\n#content .box .box_text .text[data-v-52fb6bd6] {\n  box-sizing: border-box;\n  color: #adb2b3;\n  margin-right: 20rpx;\n}\n#content .box .box_text .input[data-v-52fb6bd6] {\n  width: 40vw;\n}\n#content .box .box_login[data-v-52fb6bd6] {\n  height: 100rpx;\n  text-align: center;\n  color: #fff;\n  margin: 20rpx 60rpx;\n  border-radius: 60rpx;\n  line-height: 100rpx;\n  background: linear-gradient(to right, #5cb9ec, #5a3db6);\n}\n", ""]);
 // Exports
 module.exports = exports;
 

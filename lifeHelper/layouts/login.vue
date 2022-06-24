@@ -4,10 +4,10 @@
 		<view class="box">
 			<u-row customStyle="margin-top: 60rpx" justify='center' :gutter="20">
 				<u-col span="4">
-					<view class="box_title">登录</view>
+					<view :class="'box_title'+ isLoginPage ? ' border' :'' ">登录</view>
 				</u-col>
 				<u-col span="4">
-					<view class="box_title">注册</view>
+					<view :class="'box_title' + isLoginPage ? '' :' border' ">注册</view>
 				</u-col>
 			</u-row>
 			<u-row customStyle="padding:0 60rpx;margin-top:60rpx">
@@ -39,6 +39,7 @@
 	export default {
 		data() {
 			return {
+				isLoginPage:true,
 				passwordStatus:true,
 				form:{
 					tel:'',
@@ -94,6 +95,9 @@
 				font-size: 36rpx;
 				color: #7b92d3;
 				padding-bottom: 20rpx;
+				
+			}
+			.border {
 				border-bottom: 7rpx solid #86c1fa;
 			}
 

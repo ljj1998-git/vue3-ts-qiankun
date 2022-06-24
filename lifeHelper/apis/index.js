@@ -13,7 +13,6 @@ service.interceptors.request.use(
         //     // 给请求头添加user-token
         //     config.headers["user-token"] = store.state.token;
         // }
-        console.log('请求拦截成功')
         return config;
     },
     error => {
