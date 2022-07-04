@@ -1,43 +1,17 @@
-import Vue from 'vue'
-import axios from 'axios'
-
-// create an axios instance
-const service = axios.create({
-	timeout: 6000, // request timeout
-})
-
-// request拦截器,在请求之前做一些处理
-service.interceptors.request.use(
-    config => {
-        // if (store.state.token) {
-        //     // 给请求头添加user-token
-        //     config.headers["user-token"] = store.state.token;
-        // }
-        return config;
-    },
-    error => {
-        console.log(error); // for debug
-        return Promise.reject(error);
-    }
-); 
-
-//配置成功后的拦截器
-service.interceptors.response.use(res => {
-    if (res.data.status== 200) {
-        return res.data
-    } else {
-        return Promise.reject(res.data.msg);
-    }
-}, error => {
-	if (error.response.status) {
-		switch (error.response.status) {
-			case 401:
-				break;
-			default:
-				break;
-		}
-	}
-    return Promise.reject(error)
-})
-
-export default service
+const baseUrl = 'http://192.168.1.193:8000'
+export const request = (options = {}) => {
+	//异步封装接口，使用Promise处理异步请求
+	return new Promise((resolve, reject) => {
+		// 发送请求
+		uni.request({
+			url: baseUrl + options.url || '', //接收请求的API
+			method: options.method || 'GET', //接收请求的方式,如果不传默认为GET
+			data: options.data || {}, //接收请求的data,不传默认为空
+		}).then(data => {
+			resolve(data[1].data);
+		}).catch(error => {
+			console.log(error);
+			reject(error);
+		})
+	})
+}
