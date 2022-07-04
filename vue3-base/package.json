@@ -13,6 +13,7 @@
     "vue": "^3.2.25"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.32.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "@vitejs/plugin-vue": "^2.3.0",

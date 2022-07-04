@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 import { registerMicroApps, start } from 'qiankun';
+import ArcoVue from '@arco-design/web-vue';
 import App from './App.vue';
+import '@arco-design/web-vue/dist/arco.css';
 
 // 注册子应用
 registerMicroApps([
@@ -14,4 +16,5 @@ registerMicroApps([
 // 开启服务
 start();
 
-createApp(App).mount('#app');
+const app = createApp(App);
+app.use(ArcoVue).mount('#app');
