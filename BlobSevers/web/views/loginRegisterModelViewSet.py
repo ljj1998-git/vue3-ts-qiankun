@@ -8,14 +8,11 @@ from web.utils.response import response
 from rest_framework.decorators import action
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-from Crypto.Random import get_random_bytes
-import codecs
-import base64
 
 from web.models import User
 from web.serializers.userSerializer import UserSerializer
+
+from web.utils.demo import EncDecAES
 
 
 class LoginRegisterModelViewSet(ViewSet):
@@ -65,26 +62,11 @@ class LoginRegisterModelViewSet(ViewSet):
     @action(methods=['post'], detail=False, url_path='login', url_name='用户登录')
     def login(self, request):
         datas = request.data
-        key = b'1234567890123456'  # 密钥
+        key = '1234567890123456'  # 密钥
         ciphertext = 'U2FsdGVkX1+dpnrGzALIPzO6IuYhc/kLe1tYuwtPwPk='
 
-        data = base64.b64decode(ciphertext)
-        cipher = AES.new(key=key, mode=AES.MODE_ECB)
-        decrypt_data = cipher.decrypt(data)
-        # decrypt_data = unpad(decrypt_data, 16, style="pkcs7")
-        # base64.b64encode()
-        print(decrypt_data)
-        print(codecs.decode(base64.b64encode(decrypt_data)))
-        # print(codecs.decode(decrypt_data))
-
-        # def D_BASE64(origStr):
-        #     if(len(origStr) % 3 == 1):
-        #         origStr += "=="
-        #     elif(len(origStr) % 3 == 2):
-        #         origStr += "="
-        #     dStr = base64.b64decode(origStr)
-        #     return dStr
-        # # decrypt_data = unpad(decrypt_data, 16, style="pkcs7")
-        # print(decrypt_data.decode())
+        encMsg = EncDecAES().encrypt('123', '321')
+        decMsg = EncDecAES().decrypt(encMsg, '321')
+        print(decMsg)
 
         return Response(status=200, data=response().success({"aa": 'dad'}))

@@ -62,7 +62,6 @@
 	import {
 		toLogin,toRegister
 	} from '@/apis/modules/login.js';
-	import {JSEncrypt} from '@/utils/jsencrypt.js'
 	import { TEL_REGULAR,PASSWORD_REGULAR } from '@/utils/regular.js'
 	export default {
 		data() {
@@ -86,20 +85,11 @@
 			},
 			async handleLogin() {
 				try {
-					if(this.isLogin){
-						const res = await toLogin({tel: this.form.tel,password: password})
-						if (res.status === 200) {
-							this.showToast('请求成功')
-						} else {
-							this.showToast(res.msg,'error')
-						}
-					}else{
-						const res = await toRegister({...this.form,password: password})
-						if (res.status === 200) {
-							this.showToast(res.msg)
-						} else {
-							this.showToast(res.msg,'error')
-						}
+					const res = await toLogin(this.form)
+					if (res.status === 200) {
+						this.showToast('请求成功')
+					} else {
+						this.showToast(res.msg,'error')
 					}
 				} catch (e) {
 					console.log('出错了1');
@@ -107,12 +97,15 @@
 
 			},
 			async handleRegister() {
+			
+
 				if(!this.cheack()) return
 				
-				let {tel,password} = this.form
-				let publicKey = `1234567890123456`; //把之前生成的贴进来，实际开发过程中，可以是后台传过来的
-				let encryptor = new JSEncrypt().setPublicKey(publicKey) // 新建JSEncrypt对象
-				console.log(encryptor.encrypt(data)); 
+				// let {tel,password} = this.form
+				// let publicKey = `1234567890123456`; //把之前生成的贴进来，实际开发过程中，可以是后台传过来的
+				// let encryptor = new JSEncrypt().setPublicKey(publicKey) // 新建JSEncrypt对象
+				// console.log(encryptor);
+				// console.log(encryptor.encrypt(password)); 
 
 				// const res = await toRegister({tel,password})
 				// if (res.status === 200) {
