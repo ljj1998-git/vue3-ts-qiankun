@@ -1,5 +1,9 @@
 <template>
   <a-config-provider :locale="locale">
+    <div
+      id="vue3_system"
+      style="width: 100%; height: 200px; border: 1px solid #ccc"
+    />
     <router-view />
     <global-setting />
   </a-config-provider>
