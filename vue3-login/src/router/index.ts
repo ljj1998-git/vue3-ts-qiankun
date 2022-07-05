@@ -1,21 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import { qiankunWindow } from "vite-plugin-qiankun/dist/helper";
-
-import actions from "../utils/actions.js";
-actions.onGlobalStateChange((state, prev) => {
-  console.log("拿到路由", state);
-});
-
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "home",
     component: () => import("../views/home/index.vue"),
-  },
-  {
-    path: "/demo2",
-    name: "demo",
-    component: () => import("../views/demo/index.vue"),
   },
 ];
 /**
@@ -24,14 +13,15 @@ const routes: RouteRecordRaw[] = [
  * 原写法:
  * const router = createRouter({
     history: createWebHistory(),
-    base: window.__POWERED_BY_QIANKUN__ ? `/vue3_system` : "/",
+    base: window.__POWERED_BY_QIANKUN__ ? `/vue3_login` : "/",
     routes,
   });
  */
+console.log(qiankunWindow.__POWERED_BY_QIANKUN__);
 
 const router = createRouter({
   history: createWebHistory(
-    qiankunWindow.__POWERED_BY_QIANKUN__ ? "/vue3_system" : "/"
+    qiankunWindow.__POWERED_BY_QIANKUN__ ? "/vue3_login" : "/"
   ),
   routes,
 });
