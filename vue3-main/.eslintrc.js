@@ -36,6 +36,7 @@ module.exports = {
     },
   },
   rules: {
+    'linebreak-style': [0, 'error', 'windows'], // 解决 'LF' but found 'CRLF'
     'prettier/prettier': 1,
     // Vue: Recommended rules to be closed or modify
     'vue/require-default-prop': 0,

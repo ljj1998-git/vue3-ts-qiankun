@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'web.apps.WebConfig',
+    'app.apps.WebConfig',
+    'vue3_main.apps.Vue3MainConfig',
     'drf_yasg',
 ]
 
@@ -80,14 +81,32 @@ WSGI_APPLICATION = 'BlobSevers.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {},
+    'app': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Blob',
         'HOST': '112.124.37.144',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'L_jj1998'
-    }
+    },
+    'vue3_main': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vue3_main',
+        'HOST': '112.124.37.144',
+        'PORT': 3306,
+        'USER': 'root',
+        'PASSWORD': 'L_jj1998'
+    },
+}
+
+# 数据库路由
+DATABASE_ROUTERS = ['BlobSevers.database_router.DatabaseAppsRouter']     # 路径
+ 
+# 根据app名称路由指定的数据库
+DATABASE_APPS_MAPPING = {
+ 'app': 'app',
+ 'vue3_main': 'vue3_main',
 }
 
 

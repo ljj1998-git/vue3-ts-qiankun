@@ -62,6 +62,7 @@
 	import {
 		toLogin,toRegister
 	} from '@/apis/modules/login.js';
+	import md5 from 'js-md5'
 	import { TEL_REGULAR,PASSWORD_REGULAR } from '@/utils/regular.js'
 	export default {
 		data() {
@@ -97,8 +98,7 @@
 
 			},
 			async handleRegister() {
-			
-
+				console.log(md5('123'));
 				if(!this.cheack()) return
 				
 				// let {tel,password} = this.form
