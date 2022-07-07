@@ -6,4 +6,6 @@ module.exports = {
   quoteProps: 'consistent',
   htmlWhitespaceSensitivity: 'strict',
   vueIndentScriptAndStyle: true,
+  // 换行符使用 lf
+  endOfLine: 'auto',
 };

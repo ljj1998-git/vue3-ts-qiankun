@@ -17,7 +17,7 @@ const handleLogin = () => {
         name: "潘集项目",
         rotues: [
           {
-            path: "/vue3_system/demo2",
+            path: "/vue3_system",
             name: "首页1",
           },
         ],
