@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
+import { createPinia } from 'pinia';
+import useAppStore from './modules/app';
+import useUserStore from './modules/user';
+import useTabBarStore from './modules/tab-bar';
 
-export default defineStore("myGlobalState", {
-  // other options
-  state: () => ({
-    index: 1,
-    routes: [],
-  }),
-});
+const pinia = createPinia();
+
+export { useAppStore, useUserStore, useTabBarStore };
+export default pinia;

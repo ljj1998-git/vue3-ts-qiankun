@@ -1,21 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import { appRoutes } from './routes';
+import { appRoutes } from './routes/index';
 
-const routes = [
-  {
-    path: '/',
-    redirect: 'login',
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/index.vue'),
-    meta: {
-      requiresAuth: false,
-    },
-  },
-  // ...appRoutes,
-];
 /**
  * 此处和 Vue2/3中的配置有所不同,base是放在createWebHistory函数中传入
  * 否则RouterOptions类型会报错，不存在base
@@ -29,7 +14,21 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory('/'),
-  routes,
+  routes: [
+    {
+      path: '/',
+      redirect: 'login',
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/index.vue'),
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    ...appRoutes,
+  ],
 });
 
 export default router;

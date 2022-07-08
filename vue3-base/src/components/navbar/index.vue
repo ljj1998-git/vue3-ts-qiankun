@@ -187,67 +187,67 @@
 </template>
 
 <script lang="ts" setup>
-// import { computed, ref, inject } from 'vue';
-// import { Message } from '@arco-design/web-vue';
-// import { useDark, useToggle, useFullscreen } from '@vueuse/core';
-// import { useAppStore, useUserStore } from '@/store';
-// import { LOCALE_OPTIONS } from '@/locale';
-// import useLocale from '@/hooks/locale';
-// import useUser from '@/hooks/user';
-// import MessageBox from '../message-box/index.vue';
+import { computed, ref, inject } from 'vue';
+import { Message } from '@arco-design/web-vue';
+import { useDark, useToggle, useFullscreen } from '@vueuse/core';
+import { useAppStore, useUserStore } from '@/store';
+import { LOCALE_OPTIONS } from '@/locale';
+import useLocale from '@/hooks/locale';
+import useUser from '@/hooks/user';
+import MessageBox from '../message-box/index.vue';
 
-// const appStore = useAppStore();
-// const userStore = useUserStore();
-// const { logout } = useUser();
-// const { changeLocale } = useLocale();
-// const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
-// const locales = [...LOCALE_OPTIONS];
-// const avatar = computed(() => userStore.avatar);
-// const theme = computed(() => appStore.theme);
-// const isDark = useDark({
-//   selector: 'body',
-//   attribute: 'arco-theme',
-//   valueDark: 'dark',
-//   valueLight: 'light',
-//   storageKey: 'arco-theme',
-//   onChanged(dark: boolean) {
-//     // overridden default behavior
-//     appStore.toggleTheme(dark);
-//   },
-// });
-// const toggleTheme = useToggle(isDark);
-// const handleToggleTheme = () => {
-//   toggleTheme();
-// };
-// const setVisible = () => {
-//   appStore.updateSettings({ globalSettings: true });
-// };
-// const refBtn = ref();
-// const triggerBtn = ref();
-// const setPopoverVisible = () => {
-//   const event = new MouseEvent('click', {
-//     view: window,
-//     bubbles: true,
-//     cancelable: true,
-//   });
-//   refBtn.value.dispatchEvent(event);
-// };
-// const handleLogout = () => {
-//   logout();
-// };
-// const setDropDownVisible = () => {
-//   const event = new MouseEvent('click', {
-//     view: window,
-//     bubbles: true,
-//     cancelable: true,
-//   });
-//   triggerBtn.value.dispatchEvent(event);
-// };
-// const switchRoles = async () => {
-//   const res = await userStore.switchRoles();
-//   Message.success(res as string);
-// };
-// const toggleDrawerMenu = inject('toggleDrawerMenu');
+const appStore = useAppStore();
+const userStore = useUserStore();
+const { logout } = useUser();
+const { changeLocale } = useLocale();
+const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
+const locales = [...LOCALE_OPTIONS];
+const avatar = computed(() => userStore.avatar);
+const theme = computed(() => appStore.theme);
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'arco-theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+  storageKey: 'arco-theme',
+  onChanged(dark: boolean) {
+    // overridden default behavior
+    appStore.toggleTheme(dark);
+  },
+});
+const toggleTheme = useToggle(isDark);
+const handleToggleTheme = () => {
+  toggleTheme();
+};
+const setVisible = () => {
+  appStore.updateSettings({ globalSettings: true });
+};
+const refBtn = ref();
+const triggerBtn = ref();
+const setPopoverVisible = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  refBtn.value.dispatchEvent(event);
+};
+const handleLogout = () => {
+  logout();
+};
+const setDropDownVisible = () => {
+  const event = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  triggerBtn.value.dispatchEvent(event);
+};
+const switchRoles = async () => {
+  const res = await userStore.switchRoles();
+  Message.success(res as string);
+};
+const toggleDrawerMenu = inject('toggleDrawerMenu');
 </script>
 
 <style scoped lang="less">

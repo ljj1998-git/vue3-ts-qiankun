@@ -1,7 +1,8 @@
 import { createApp } from 'vue';
 import { registerMicroApps, start } from 'qiankun';
 import ArcoVue from '@arco-design/web-vue';
-import router from '@/router';
+import router from './router';
+import store from './store';
 import App from './App.vue';
 import '@arco-design/web-vue/dist/arco.css';
 
@@ -21,7 +22,7 @@ registerMicroApps([
   },
 ]);
 // 开启服务
-start({ prefetch: 'all' });
+start();
 
 const app = createApp(App);
 app.use(ArcoVue).use(router).mount('#app');

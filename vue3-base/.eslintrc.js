@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+
 module.exports = {
   root: true,
   globals: {
@@ -9,13 +12,29 @@ module.exports = {
     'airbnb-base',
     'plugin:vue/vue3-recommended',
   ],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: path.resolve(__dirname, './tsconfig.json'),
+      },
+    },
+  },
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
   },
   rules: {
     'linebreak-style': [0, 'error', 'windows'], // 解决 'LF' but found 'CRLF'
-    'prettier/prettier': 1,
+    'prettier/prettier': 'off',
+    'import/no-unresolved': [2,
+      {
+        ignore: ['^@/'], // @ 是设置的路径别名
+      },
+    ],
+    'max-len': {
+      code:1000
+    },
+
     // Vue: Recommended rules to be closed or modify
     'vue/require-default-prop': 0,
     'vue/singleline-html-element-content-newline': 0,
