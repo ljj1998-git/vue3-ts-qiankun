@@ -3,8 +3,10 @@
     <!-- <LoginBanner /> -->
     <div class="content">
       <div class="content-inner">
-        <LoginForm v-if="storeIsLogin" />
-        <RegisterForm v-else />
+        <transition name="fade" mode="out-in" appear>
+          <LoginForm v-if="storeIsLogin" />
+          <RegisterForm v-else />
+        </transition>
       </div>
       <div class="footer">
         <!-- <Footer /> -->

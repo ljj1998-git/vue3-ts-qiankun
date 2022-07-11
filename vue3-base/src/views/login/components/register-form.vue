@@ -12,11 +12,11 @@
       @submit="handleSubmit"
     >
       <a-form-item
-        field="username"
+        field="tel"
         :validate-trigger="['change', 'blur']"
         hide-label
       >
-        <a-input v-model="userInfo.username" placeholder="请输入用户名">
+        <a-input v-model="userInfo.tel" placeholder="请输入手机号码">
           <template #prefix>
             <icon-user />
           </template>
@@ -69,7 +69,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-import { login } from "@/api/login";
+import { registerUser } from "@/api/vue3-base/login";
 // import { useRouter } from "vue-router";
 // import { Message } from "@arco-design/web-vue";
 import { ValidatedError } from "@arco-design/web-vue/es/form/interface";
@@ -81,22 +81,22 @@ import { RegisterRules } from "../types";
 // import { useUserStore } from "@/store";
 // import useLoading from "@/hooks/loading";
 
-const USERNAME_REGULAR = /^[a-z|A-Z|0-9|_|-]{4,16}$/;
+const TEL_REGULAR = /^(?:(?:\+|00)86)?1[3-9]\d{9}$/;
 const PASSWORD_REGULAR =
   /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\W_!@#$%^&*`~()-+=]+$)(?![0-9\W_!@#$%^&*`~()-+=]+$)[a-zA-Z0-9\W_!@#$%^&*`~()-+=]/;
 const userInfo = reactive({
-  username: "",
+  tel: "",
   password: "",
   passwordAgain: "",
 });
 // 表单校验
 const rules: Record<string, Array<RegisterRules>> = {
-  username: [
+  tel: [
     {
       validator: (value, cb) => {
-        if (!value) cb("用户名不能为空");
-        if (!USERNAME_REGULAR.test(value))
-          cb("用户名应为字母、数字、_ 、-,至少4个字符");
+        if (!value) cb("手机号码不能为空");
+        if (!TEL_REGULAR.test(value))
+          cb("请输入正确的手机号码");
       },
     },
   ],
@@ -140,7 +140,7 @@ const handleTologBtn = (): void => {
 
 // const loginConfig = useStorage("register-config", {
 //   rememberPassword: true,
-//   username: "admin", // 演示默认值
+//   tel: "admin", // 演示默认值
 //   password: "admin", // demo default value
 // });
 
@@ -152,9 +152,9 @@ const handleSubmit = async ({
   values: Record<string, any>;
 }) => {
   if (!errors) {
-    const { username } = userInfo;
+    const { tel } = userInfo;
     const password = Md5.hashStr(userInfo.password);
-    const res = await login({ username, password });
+    const res = await registerUser({ tel, password });
     console.log(res);
   }
 };
@@ -179,10 +179,10 @@ const handleSubmit = async ({
 //       });
 //       Message.success(t("register.form.register.success"));
 //       const { rememberPassword } = loginConfig.value;
-//       const { username, password } = values;
+//       const { tel, password } = values;
 //       // 实际生产环境需要进行加密存储。
 //       // The actual production environment requires encrypted storage.
-//       loginConfig.value.username = rememberPassword ? username : "";
+//       loginConfig.value.tel = rememberPassword ? tel : "";
 //       loginConfig.value.password = rememberPassword ? password : "";
 //     } catch (err) {
 //       errorMessage.value = (err as Error).message;

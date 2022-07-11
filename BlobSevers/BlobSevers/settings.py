@@ -109,6 +109,11 @@ DATABASE_APPS_MAPPING = {
  'vue3_main': 'vue3_main',
 }
 
+# 自定义异常处理
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'BlobSevers.utils.exceptions.my_exception_handler'
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
