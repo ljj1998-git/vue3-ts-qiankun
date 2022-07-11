@@ -5,6 +5,7 @@ import router from "./router";
 import pinia from "./store";
 import App from "./App.vue";
 import "@arco-design/web-vue/dist/arco.css";
+import "@/assets/style/global.less";
 
 // 注册子应用
 registerMicroApps([
