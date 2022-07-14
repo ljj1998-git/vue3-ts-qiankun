@@ -4,5 +4,6 @@ from vue3_main import views
 
 urlpatterns = []
 router = SimpleRouter()
-router.register('aloginRegister', views.LoginRegisterModelViewSet, 'aloginRegister')
+router.register('loginRegister', views.LoginRegisterModelViewSet, 'loginRegister')
+# router.register('menus', views.menusModelViewSet, 'menus')
 urlpatterns += router.urls

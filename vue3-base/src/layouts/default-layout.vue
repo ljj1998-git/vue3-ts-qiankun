@@ -8,22 +8,20 @@
         <a-layout-sider
           class="layout-sider"
           breakpoint="xl"
+          :collapsed="collapsed"
           :collapsible="true"
+          :width="menuWidth"
+          :style="{ paddingTop: '60px' }"
+          @collapse="setCollapsed"
         >
-          <div class="menu-wrapper"></div>
+          <div class="menu-wrapper">
+            <Menu />
+          </div>
         </a-layout-sider>
-        <a-drawer
-          placement="left"
-          :footer="false"
-          mask-closable
-          :closable="false"
-        >
-        </a-drawer>
         <a-layout class="layout-content" :style="paddingStyle">
           <a-layout-content>
             <PageLayout />
           </a-layout-content>
-          <!-- <Footer v-if="footer" /> -->
         </a-layout>
       </a-layout>
     </a-layout>
@@ -35,7 +33,7 @@ import { ref, computed, watch, provide } from "vue";
 // import { useRouter, useRoute } from 'vue-router';
 import { useAppStore } from "@/store";
 import NavBar from "@/components/navbar/index.vue";
-// import Menu from '@/components/menu/index.vue';
+import Menu from '@/components/menu/index.vue';
 // import usePermission from '@/hooks/permission';
 // import useResponsive from '@/hooks/responsive';
 import PageLayout from "./page-layout.vue";
@@ -46,26 +44,27 @@ const appStore = useAppStore();
 // const route = useRoute();
 // const permission = usePermission();
 // useResponsive(true);
-const navbarHeight = `60px`;
-const navbar = computed(() => appStore.navbar);
+
 const renderMenu = computed(() => appStore.menu);
 const hideMenu = computed(() => appStore.hideMenu);
-// const footer = computed(() => appStore.footer);
+// 左侧侧边栏
 const menuWidth = computed(() =>
   appStore.menuCollapse ? 48 : appStore.menuWidth
 );
-// const collapsed = computed(() => appStore.menuCollapse);
+const collapsed = computed(() => appStore.menuCollapse);
+const setCollapsed = (val: boolean) => {
+  appStore.updateSettings({ menuCollapse: val });
+};
+// 主内容
 const paddingStyle = computed(() => {
   const paddingLeft =
     renderMenu.value && !hideMenu.value
       ? { paddingLeft: `${menuWidth.value}px` }
       : {};
-  const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
+  const paddingTop = { paddingTop: '60px' } 
   return { ...paddingLeft, ...paddingTop };
 });
-// const setCollapsed = (val: boolean) => {
-//   appStore.updateSettings({ menuCollapse: val });
-// };
+
 // watch(
 //   () => userStore.role,
 //   (roleValue) => {
@@ -101,7 +100,7 @@ const paddingStyle = computed(() => {
 
 .layout-sider {
   position: fixed;
-  top: 0;
+  top: 0px;
   left: 0;
   z-index: 99;
   height: 100%;

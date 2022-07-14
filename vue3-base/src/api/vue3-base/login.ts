@@ -10,9 +10,9 @@ export interface LoginRes {
   token: string;
 }
 export function login(data: LoginData) {
-  return axios.post<LoginRes>( VITE_APP_API_BASEURL + "/aloginRegister/login/", data);
+  return axios.post<LoginRes>( VITE_APP_API_BASEURL + "/loginRegister/login/", data);
 }
 //注册
 export function registerUser(data: LoginData) {
-  return axios.post<LoginRes>( VITE_APP_API_BASEURL + "/aloginRegister/register/", data);
+  return axios.post<LoginRes>( VITE_APP_API_BASEURL + "/loginRegister/register/", data);
 }

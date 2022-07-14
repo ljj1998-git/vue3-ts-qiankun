@@ -21,7 +21,7 @@ console.log(qiankunWindow.__POWERED_BY_QIANKUN__);
 
 const router = createRouter({
   history: createWebHistory(
-    qiankunWindow.__POWERED_BY_QIANKUN__ ? "/vue3_login" : "/"
+    qiankunWindow.__POWERED_BY_QIANKUN__ ? "/App/vue3_login" : "/"
   ),
   routes,
 });

@@ -7,16 +7,16 @@ actions.onGlobalStateChange((state, prev) => {
 });
 
 const routes: RouteRecordRaw[] = [
-  // {
-  //   path: "/",
-  //   name: "home",
-  //   component: () => import("../views/home/index.vue"),
-  // },
-  // {
-  //   path: "/demo2",
-  //   name: "demo",
-  //   component: () => import("../views/demo/index.vue"),
-  // },
+  {
+    path: "/demo1",
+    name: "home",
+    component: () => import("../views/home/index.vue"),
+  },
+  {
+    path: "/demo2",
+    name: "demo",
+    component: () => import("../views/demo/index.vue"),
+  },
 ];
 /**
  * 此处和 Vue2/3中的配置有所不同,base是放在createWebHistory函数中传入

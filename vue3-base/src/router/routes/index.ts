@@ -16,6 +16,8 @@ function formatModules(_modules: any, result: RouteRecordRaw[]) {
 }
 
 export const appRoutes: RouteRecordRaw[] = formatModules(modules, []);
+console.log(appRoutes);
+
 
 export const appExternalRoutes: RouteRecordRaw[] = formatModules(
   externalModules,

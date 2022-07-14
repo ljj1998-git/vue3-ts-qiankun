@@ -143,7 +143,7 @@ const handleSubmit = async ({
       const { status,data } = await login({ tel, password });
       if(status === 200){
         sessionStorage.setItem('token',data.token)
-         router.push({ name: "App" });
+        //  router.push({ name: "App" });
       } 
     } catch (error) {
       console.log(error);

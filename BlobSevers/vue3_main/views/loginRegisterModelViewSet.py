@@ -1,18 +1,19 @@
 
-from django.test import tag
-from rest_framework.viewsets import ModelViewSet, ViewSet
+# common
+from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from sqlalchemy import null
-from vue3_main.utils.response import response
 from rest_framework.decorators import action
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-
+# model
 from vue3_main.models import User
-from vue3_main.serializers.userSerializer import vue3_main_UserSerializer
-
+from vue3_main.serializer import vue3_main_UserSerializer
+# service
+from vue3_main.service import combindedRoutes
+# utils
 from vue3_main.utils.jwt import get_jwt_token, decode_jwt_token
 from vue3_main.utils.md5 import get_md5_salt
+from vue3_main.utils.response import response
 
 
 class LoginRegisterModelViewSet(ViewSet):
@@ -80,10 +81,10 @@ class LoginRegisterModelViewSet(ViewSet):
             # 存在
             if filterObj:
                 newPassword = get_md5_salt(password)
-                print(newPassword, filterObj.password)
                 if newPassword == filterObj.password:
                     token = get_jwt_token(tel, 60)
-                    return Response(status=200, data=response().success({"token": token}))
+                    routes = combindedRoutes()
+                    return Response(status=200, data=response().success({"token": token,"routes":routes}))
                 else:
                     return Response(status=200, data=response().error({}, message='密码错误!'))
             # 不存在

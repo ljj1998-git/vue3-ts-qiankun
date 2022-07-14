@@ -7,12 +7,12 @@ import { AppState } from "./types";
 
 const useAppStore = defineStore("app", {
   state: (): AppState => ({
+    menuCollapse: true,
+
     theme: "light",
     colorWeak: false,
-    navbar: true,
     menu: true,
     hideMenu: false,
-    menuCollapse: false,
     footer: true,
     themeColor: "#165DFF",
     menuWidth: 220,

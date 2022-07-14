@@ -2,23 +2,22 @@
   <div class="navbar">
     <div class="left-side">
       <a-space>
-        <img
-          alt="logo"
-          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        />
-        <a-typography-title
-          :style="{ margin: 0, fontSize: '18px' }"
-          :heading="5"
-        >
+        <img alt="logo"
+          src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image" />
+        <a-typography-title :style="{ margin: 0, fontSize: '18px' }" :heading="5">
           Arco Pro
         </a-typography-title>
-        <icon-menu-fold
-          style="font-size: 22px; cursor: pointer"
-          @click="toggleDrawerMenu"
-        />
+        <icon-menu-fold style="font-size: 22px; cursor: pointer" @click="toggleDrawerMenu" />
       </a-space>
     </div>
     <ul class="right-side">
+      <li>
+        <a-select :style="{ width: '320px' }" placeholder="请选择系统">
+          <a-option>后台系统</a-option>
+          <a-option>移动端</a-option>
+          <a-option>组件库</a-option>
+        </a-select>
+      </li>
       <li>
         <a-tooltip content="搜索">
           <a-button class="nav-btn" type="outline" :shape="'circle'">
@@ -30,12 +29,7 @@
       </li>
       <li>
         <a-tooltip :content="theme === 'light' ? '暗黑模式' : '明亮模式'">
-          <a-button
-            class="nav-btn"
-            type="outline"
-            :shape="'circle'"
-            @click="handleToggleTheme"
-          >
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="handleToggleTheme">
             <template #icon>
               <icon-moon-fill v-if="theme === 'dark'" />
               <icon-sun-fill v-else />
@@ -47,23 +41,14 @@
         <a-tooltip content="消息通知">
           <div class="message-box-trigger">
             <a-badge :count="9" dot>
-              <a-button
-                class="nav-btn"
-                type="outline"
-                :shape="'circle'"
-                @click="setPopoverVisible"
-              >
+              <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setPopoverVisible">
                 <icon-notification />
               </a-button>
             </a-badge>
           </div>
         </a-tooltip>
-        <a-popover
-          trigger="click"
-          :arrow-style="{ display: 'none' }"
-          :content-style="{ padding: 0, minWidth: '400px' }"
-          content-class="message-popover"
-        >
+        <a-popover trigger="click" :arrow-style="{ display: 'none' }" :content-style="{ padding: 0, minWidth: '400px' }"
+          content-class="message-popover">
           <div ref="refBtn" class="ref-btn"></div>
           <template #content>
             <message-box />
@@ -71,15 +56,8 @@
         </a-popover>
       </li>
       <li>
-        <a-tooltip
-          :content="isFullscreen ? '点击退出全屏模式' : '点击进入全屏模式'"
-        >
-          <a-button
-            class="nav-btn"
-            type="outline"
-            :shape="'circle'"
-            @click="toggleFullScreen"
-          >
+        <a-tooltip :content="isFullscreen ? '点击退出全屏模式' : '点击进入全屏模式'">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="toggleFullScreen">
             <template #icon>
               <icon-fullscreen-exit v-if="isFullscreen" />
               <icon-fullscreen v-else />
@@ -89,10 +67,7 @@
       </li>
       <li>
         <a-dropdown trigger="click">
-          <a-avatar
-            :size="32"
-            :style="{ marginRight: '8px', cursor: 'pointer' }"
-          >
+          <a-avatar :size="32" :style="{ marginRight: '8px', cursor: 'pointer' }">
             <img alt="avatar" />
           </a-avatar>
           <template #content>
@@ -196,9 +171,11 @@ const toggleDrawerMenu = inject("toggleDrawerMenu");
   display: flex;
   padding-right: 20px;
   list-style: none;
+
   :deep(.locale-select) {
     border-radius: 20px;
   }
+
   li {
     display: flex;
     align-items: center;
@@ -209,16 +186,19 @@ const toggleDrawerMenu = inject("toggleDrawerMenu");
     color: var(--color-text-1);
     text-decoration: none;
   }
+
   .nav-btn {
     border-color: rgb(var(--gray-2));
     color: rgb(var(--gray-8));
     font-size: 16px;
   }
+
   .trigger-btn,
   .ref-btn {
     position: absolute;
     bottom: 14px;
   }
+
   .trigger-btn {
     margin-left: 14px;
   }
