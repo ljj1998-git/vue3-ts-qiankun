@@ -102,11 +102,11 @@ DATABASES = {
 
 # 数据库路由
 DATABASE_ROUTERS = ['BlobSevers.database_router.DatabaseAppsRouter']     # 路径
- 
+
 # 根据app名称路由指定的数据库
 DATABASE_APPS_MAPPING = {
- 'app': 'app',
- 'vue3_main': 'vue3_main',
+    'app': 'app',
+    'vue3_main': 'vue3_main',
 }
 
 # 自定义异常处理

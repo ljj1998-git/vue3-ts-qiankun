@@ -9,7 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 from vue3_main.models import User
 from vue3_main.serializer import vue3_main_UserSerializer
 # service
-from vue3_main.service import combindedRoutes
+from vue3_main.service import combindedRoutes, getAllUserSystem
 # utils
 from vue3_main.utils.jwt import get_jwt_token, decode_jwt_token
 from vue3_main.utils.md5 import get_md5_salt
@@ -82,9 +82,14 @@ class LoginRegisterModelViewSet(ViewSet):
             if filterObj:
                 newPassword = get_md5_salt(password)
                 if newPassword == filterObj.password:
+                    # 获取token
                     token = get_jwt_token(tel, 60)
-                    routes = combindedRoutes()
-                    return Response(status=200, data=response().success({"token": token,"routes":routes}))
+                    # 获取当前登录人路由
+                    routes = combindedRoutes(tel)
+                    # 获取当前登录人关联的所有系统
+                    systems = getAllUserSystem(tel)
+
+                    return Response(status=200, data=response().success({"token": token, "routes": routes, "systems": systems}))
                 else:
                     return Response(status=200, data=response().error({}, message='密码错误!'))
             # 不存在

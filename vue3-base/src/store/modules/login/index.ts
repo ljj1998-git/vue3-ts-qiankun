@@ -4,7 +4,10 @@ import type { NotificationReturn } from "@arco-design/web-vue/es/notification/in
 import { AppState } from "./types";
 
 const useAppStore = defineStore("app", {
-  state: (): AppState => ({ isLogin: true }),
+  state: (): AppState => ({
+    isLogin: true,
+    systems: [],
+  }),
   actions: {
     // Update app settings
     updateSettings(partial: Partial<AppState>) {

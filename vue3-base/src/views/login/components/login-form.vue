@@ -63,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive,onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { login } from "@/api/vue3-base/login";
 import { useRouter } from "vue-router";
 // import { Message } from "@arco-design/web-vue";
@@ -79,7 +79,7 @@ const handleRegisterBtn = (): void => {
   store.updateSettings({ isLogin: false });
 };
 // import useLoading from "@/hooks/loading";
-onMounted(()=>{
+onMounted(() => {
   // setInterval(()=>{
   //   console.log(1);
   //   setTimeout(()=>{
@@ -89,10 +89,9 @@ onMounted(()=>{
   //         console.log(3,index);
   //       },1000)
   //     })
-      
   //   },2000)
   // },5000)
-})
+});
 const router = useRouter();
 // const { t } = useI18n();
 const errorMessage = ref("");
@@ -113,8 +112,7 @@ const rules: Record<string, Array<RegisterRules>> = {
     {
       validator: (value, cb) => {
         if (!value) cb("手机号码不能为空");
-        if (!TEL_REGULAR.test(value))
-          cb("请输入正确的手机号码");
+        if (!TEL_REGULAR.test(value)) cb("请输入正确的手机号码");
       },
     },
   ],
@@ -140,11 +138,14 @@ const handleSubmit = async ({
     const { tel } = userInfo;
     const password = Md5.hashStr(userInfo.password);
     try {
-      const { status,data } = await login({ tel, password });
-      if(status === 200){
-        sessionStorage.setItem('token',data.token)
-        //  router.push({ name: "App" });
-      } 
+      const { status, data } = await login({ tel, password });
+      if (status === 200) {
+        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("routes", JSON.stringify(data.routes));
+        sessionStorage.setItem("systems", JSON.stringify(data.systems));
+        store.updateSettings({ systems: data.systems });
+        router.push({ name: "App" });
+      }
     } catch (error) {
       console.log(error);
     }

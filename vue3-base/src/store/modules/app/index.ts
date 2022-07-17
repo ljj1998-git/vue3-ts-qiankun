@@ -7,7 +7,11 @@ import { AppState } from "./types";
 
 const useAppStore = defineStore("app", {
   state: (): AppState => ({
-    menuCollapse: true,
+    //全局通用模块
+    systems: [], //顶部 系统下拉框数据
+
+    //首页通用模块
+    menuCollapse: true, // 控制侧边栏是否收缩
 
     theme: "light",
     colorWeak: false,

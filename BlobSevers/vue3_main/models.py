@@ -2,6 +2,8 @@
 from django.db import models
 
 # 用户表
+
+
 class User(models.Model):
     id = models.AutoField(primary_key=True, help_text='主键id')
     password = models.CharField(max_length=200, help_text='密码')
@@ -11,6 +13,8 @@ class User(models.Model):
         app_label = 'vue3_main'
 
 # 菜单表
+
+
 class Menus(models.Model):
     id = models.AutoField(primary_key=True, help_text='主键id')
     name = models.CharField(max_length=255, null=True, help_text='菜单名称')
@@ -21,11 +25,23 @@ class Menus(models.Model):
         app_label = 'vue3_main'
 
 # 菜单绑定表
+
+
 class Menu_Tree_Info(models.Model):
     id = models.AutoField(primary_key=True, help_text='主键id')
-    menuId = models.ForeignKey(to=Menus,to_field='id',null=True,on_delete=models.CASCADE, help_text='菜单id')
-    ancestorId = models.CharField(max_length=255, null=True, help_text='父级和祖父级ID')
-    level =  models.CharField(max_length=255, null=True, help_text='层级')
+    menuId = models.ForeignKey(to=Menus, to_field='id', null=True,
+                               on_delete=models.DO_NOTHING, db_constraint=False, help_text='菜单id')
+    ancestorId = models.CharField(
+        max_length=255, null=True, help_text='父级和祖父级ID')
+    level = models.CharField(max_length=255, null=True, help_text='层级')
 
     class Meta:
         app_label = 'vue3_main'
+
+# 所有系统名称表
+
+
+class System(models.Model):
+    id = models.AutoField(primary_key=True, help_text='主键id')
+    name = models.CharField(max_length=100, help_text='系统名称')
+    user = models.ManyToManyField(User, verbose_name='关联用户表')
