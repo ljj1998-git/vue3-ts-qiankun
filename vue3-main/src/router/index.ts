@@ -1,14 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import NProgress from 'nprogress'; // progress bar
-import 'nprogress/nprogress.css';
+import { appRoutes } from './routes/index';
 
-import { appRoutes } from './routes';
-import createRouteGuard from './guard';
-
-NProgress.configure({ showSpinner: false }); // NProgress Configuration
+/**
+ * 此处和 Vue2/3中的配置有所不同,base是放在createWebHistory函数中传入
+ * 否则RouterOptions类型会报错，不存在base
+ * 原写法:
+ * const router = createRouter({
+    history: createWebHistory(),
+    base: window.__POWERED_BY_QIANKUN__ ? `/vue3_login` : "/",
+    routes,
+  });
+ */
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory('/'),
   routes: [
     {
       path: '/',
@@ -23,17 +28,7 @@ const router = createRouter({
       },
     },
     ...appRoutes,
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'notFound',
-      component: () => import('@/views/not-found/index.vue'),
-    },
   ],
-  scrollBehavior() {
-    return { top: 0 };
-  },
 });
-
-createRouteGuard(router);
 
 export default router;

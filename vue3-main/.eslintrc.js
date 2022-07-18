@@ -3,30 +3,14 @@ const path = require('path');
 
 module.exports = {
   root: true,
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    // Parser that checks the content of the <script> tag
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-    ecmaVersion: 2020,
-    ecmaFeatures: {
-      jsx: true,
-    },
+  globals: {
+    defineEmits: 'readonly',
+    defineProps: 'readonly',
   },
-  env: {
-    'browser': true,
-    'node': true,
-    'vue/setup-compiler-macros': true,
-  },
-  plugins: ['@typescript-eslint'],
   extends: [
-    // Airbnb JavaScript Style Guide https://github.com/airbnb/javascript
-    'airbnb-base',
     'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
+    'airbnb-base',
     'plugin:vue/vue3-recommended',
-    'plugin:prettier/recommended',
   ],
   settings: {
     'import/resolver': {
@@ -35,9 +19,22 @@ module.exports = {
       },
     },
   },
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+  },
   rules: {
     'linebreak-style': [0, 'error', 'windows'], // 解决 'LF' but found 'CRLF'
-    'prettier/prettier': 1,
+    'prettier/prettier': 'off',
+    'import/no-unresolved': [2,
+      {
+        ignore: ['^@/'], // @ 是设置的路径别名
+      },
+    ],
+    'max-len': {
+      code:1000
+    },
+
     // Vue: Recommended rules to be closed or modify
     'vue/require-default-prop': 0,
     'vue/singleline-html-element-content-newline': 0,

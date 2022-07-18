@@ -1,4 +1,5 @@
 
+from os import system
 from django.db import models
 
 # 用户表
@@ -30,10 +31,11 @@ class Menus(models.Model):
 class Menu_Tree_Info(models.Model):
     id = models.AutoField(primary_key=True, help_text='主键id')
     menuId = models.ForeignKey(to=Menus, to_field='id', null=True,
-                               on_delete=models.DO_NOTHING, db_constraint=False, help_text='菜单id')
+                               on_delete=models.CASCADE, db_constraint=False, help_text='菜单id')
     ancestorId = models.CharField(
         max_length=255, null=True, help_text='父级和祖父级ID')
     level = models.CharField(max_length=255, null=True, help_text='层级')
+    systemId = models.CharField(max_length=11,help_text='系统id')
 
     class Meta:
         app_label = 'vue3_main'
@@ -44,4 +46,7 @@ class Menu_Tree_Info(models.Model):
 class System(models.Model):
     id = models.AutoField(primary_key=True, help_text='主键id')
     name = models.CharField(max_length=100, help_text='系统名称')
-    user = models.ManyToManyField(User, verbose_name='关联用户表')
+    user = models.ManyToManyField(User, help_text='关联用户表')
+    menuId = models.ForeignKey(to=Menus,to_field='id',on_delete=models.CASCADE,verbose_name='外键关联菜单表')
+    class Meta:
+        app_label = 'vue3_main'

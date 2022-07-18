@@ -6,18 +6,19 @@ from vue3_main.serializer import vue3_main_menusSerializer, vue3_main_menusTreeI
 from vue3_main.serializers import combindMenusSerializer
 
 
-def combindedRoutes(tel):
+def combindedRoutes(tel,systemId):
     # 创建空数组
     newArr = []
-    # 获取所有的菜单
-    allMenu = Menus.objects.all()
-
+    allRules = []
     # 获取所有菜单关系表,升序排序
-    allRules = Menu_Tree_Info.objects.all().order_by('level')
+    if systemId:
+        allRules = Menu_Tree_Info.objects.filter(systemId=systemId).order_by('level')
+    else:
+        allRules = Menu_Tree_Info.objects.all().order_by('level')
 
-    a = combindMenusSerializer(allRules, many=True)
+    filterDatas = combindMenusSerializer(allRules, many=True)
 
-    for item in a.data:
+    for item in filterDatas.data:
         level = item.get('level')
         ancestorId1 = item.get('ancestorId')
         if level == "0":
