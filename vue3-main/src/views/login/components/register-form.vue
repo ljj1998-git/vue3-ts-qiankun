@@ -69,12 +69,12 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
-import { registerUser } from "@/api/vue3-base/login";
+import { registerUser } from "@/api/login";
 // import { useRouter } from "vue-router";
 // import { Message } from "@arco-design/web-vue";
 import { ValidatedError } from "@arco-design/web-vue/es/form/interface";
 import { Md5 } from "ts-md5/dist/md5";
-import { useLoginStore } from "@/store";
+import { useAppStore } from "@/store";
 import { RegisterRules } from "../types";
 // import { useI18n } from "vue-i18n";
 // import { useStorage } from "@vueuse/core";
@@ -123,7 +123,7 @@ const rules: Record<string, Array<RegisterRules>> = {
 // const { t } = useI18n();
 const errorMessage = ref("");
 
-const store = useLoginStore();
+const store = useAppStore();
 // const { loading, setLoading } = useLoading();
 // const userStore = useUserStore();
 const handleTologBtn = (): void => {

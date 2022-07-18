@@ -7,6 +7,13 @@ const DASHBOARD: AppRouteRecordRaw = {
   component: DEFAULT_LAYOUT,
   // meta: {},
   children: [
+    //菜单管理
+    {
+      path: 'menuManage',
+      name: 'menuManage',
+      component: () => import('@/views/App/menuManage/index.vue'),
+    },
+    //用户管理
     {
       path: 'userManage',
       name: 'userManage',

@@ -1,4 +1,4 @@
-import axios from "@/api/axios";
+import axios from "@/utils/request";
 const VITE_APP_API_BASEURL = import.meta.env.VITE_APP_API_BASEURL;
 
 export interface LoginData {

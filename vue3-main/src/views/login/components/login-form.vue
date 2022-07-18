@@ -64,16 +64,16 @@
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from "vue";
-import { login } from "@/api/vue3-base/login";
+import { login } from "@/api/login";
 import { useRouter } from "vue-router";
 // import { Message } from "@arco-design/web-vue";
 import { ValidatedError } from "@arco-design/web-vue/es/form/interface";
 import { Md5 } from "ts-md5/dist/md5";
 // import { useI18n } from "vue-i18n";
 // import { useStorage } from "@vueuse/core";
-import { useLoginStore } from "@/store";
+import { useAppStore } from "@/store";
 import { RegisterRules } from "../types";
-const store = useLoginStore();
+const store = useAppStore();
 // 点击注册按钮按钮，切换登录/注册状态 pinia/isLogin
 const handleRegisterBtn = (): void => {
   store.updateSettings({ isLogin: false });
@@ -141,8 +141,6 @@ const handleSubmit = async ({
       const { status, data } = await login({ tel, password });
       if (status === 200) {
         sessionStorage.setItem("token", data.token);
-        sessionStorage.setItem("routes", JSON.stringify(data.routes));
-        sessionStorage.setItem("systems", JSON.stringify(data.systems));
         store.updateSettings({ systems: data.systems });
         router.push({ name: "App" });
       }

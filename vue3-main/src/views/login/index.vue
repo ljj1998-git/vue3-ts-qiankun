@@ -18,9 +18,9 @@
 <script lang="ts" setup>
 import LoginForm from "./components/login-form.vue";
 import RegisterForm from "./components/register-form.vue";
-import { useLoginStore } from "@/store";
+import { useAppStore } from "@/store";
 import { storeToRefs } from "pinia";
-const store = useLoginStore();
+const store = useAppStore();
 const storeRef = storeToRefs(store);
 const { isLogin: storeIsLogin } = storeRef;
 </script>

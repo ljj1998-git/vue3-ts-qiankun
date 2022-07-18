@@ -21,7 +21,7 @@
     <ul class="right-side">
       <li>
         <a-select :style="{ width: '320px' }" placeholder="请选择系统" @change="selectSystem">
-          <a-option v-for="item in systemLists" :key="item.id">{{
+          <a-option v-for="item in systemLists" :key="item.id" :value="item.id">{{
             item.name
           }}</a-option>
         </a-select>
@@ -139,7 +139,9 @@ import { computed, ref, inject } from "vue";
 import { useRouter } from "vue-router";
 import { Message } from "@arco-design/web-vue";
 import { useDark, useToggle, useFullscreen } from "@vueuse/core";
-import { useLoginStore } from "@/store";
+import { useAppStore } from "@/store";
+import { storeToRefs } from "pinia";
+import { getMenusBySystemId,getMenusBySystemIdParams } from '@/api/navBar'
 
 import {
   IconFullscreen,
@@ -151,10 +153,15 @@ import {
 } from "@arco-design/web-vue/es/icon";
 const router = useRouter();
 //初始化系统选择
-const loginStore = useLoginStore();
-const systemLists = loginStore.systems;
-const selectSystem = () =>{
-  
+const loginStore = useAppStore();
+const loginStoreRef = storeToRefs(loginStore);
+const { systems: systemLists } = loginStoreRef;
+const selectSystem = async (systemId: any) =>{
+  const params:getMenusBySystemIdParams = {systemId}
+  const {status,data} = await getMenusBySystemId(params)
+  if(status === 200){
+    loginStore.updateSettings({menus:data.menus})
+  }
 }
 // 全屏功能
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
@@ -187,6 +194,8 @@ const setPopoverVisible = () => {
 };
 const handleLogout = () => {
   sessionStorage.clear();
+  console.log(55);
+  
   router.push({ path: "/" });
 };
 

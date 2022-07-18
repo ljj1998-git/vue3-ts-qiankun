@@ -85,11 +85,11 @@ class LoginRegisterModelViewSet(ViewSet):
                     # 获取token
                     token = get_jwt_token(tel, 60)
                     # 获取当前登录人路由
-                    routes = combindedRoutes(tel)
+                    # routes = combindedRoutes(tel)
                     # 获取当前登录人关联的所有系统
                     systems = getAllUserSystem(tel)
 
-                    return Response(status=200, data=response().success({"token": token, "routes": routes, "systems": systems}))
+                    return Response(status=200, data=response().success({"token": token, "systems": systems}))
                 else:
                     return Response(status=200, data=response().error({}, message='密码错误!'))
             # 不存在

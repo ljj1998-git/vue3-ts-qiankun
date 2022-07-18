@@ -6,11 +6,10 @@
       breakpoint="xl"
       @menu-item-click="handleClick"
     >
-      <a-sub-menu key="0">
+      <a-sub-menu v-for="item in menus">
         <template #icon><icon-apps></icon-apps></template>
-        <template #title>Navigation 1</template>
-        <a-menu-item key="/vue3_system/demo1">菜单1</a-menu-item>
-        <a-menu-item key="/vue3_system/demo2">菜单2</a-menu-item>
+        <template #title>{{item.name}}</template>
+        <a-menu-item v-for="val in item.children" :key="val.path">{{val.name}}</a-menu-item>
       </a-sub-menu>
  </a-menu>
 </template>
@@ -18,6 +17,13 @@
 <script lang="ts" setup>
 import {IconApps} from "@arco-design/web-vue/es/icon";
 import { useRouter } from 'vue-router'
+import { useAppStore } from "@/store";
+import { storeToRefs } from "pinia";
+// 渲染菜单
+const store = useAppStore()
+const storeRef = storeToRefs(store)
+const { menus } = storeRef
+
 const router = useRouter()
 const handleClick = (key:string) =>{
   router.push({ path: key });

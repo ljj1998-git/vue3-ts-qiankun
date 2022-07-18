@@ -8,7 +8,9 @@ import { AppState } from "./types";
 const useAppStore = defineStore("app", {
   state: (): AppState => ({
     //全局通用模块
+    isLogin: true, // 登录页 true为登录 false为注册
     systems: [], //顶部 系统下拉框数据
+    menus:[], //菜单
 
     //首页通用模块
     menuCollapse: true, // 控制侧边栏是否收缩
@@ -53,6 +55,11 @@ const useAppStore = defineStore("app", {
       }
     },
   },
+  persist: {
+    enabled: true,
+    encryptionKey: 'ljj66',
+    storage: sessionStorage,
+  }
 });
 
 export default useAppStore;
