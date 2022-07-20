@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import { appRoutes } from './routes/index';
+import { createRouter, createWebHistory } from "vue-router";
+import { appRoutes } from "./routes/index";
 
 /**
  * 此处和 Vue2/3中的配置有所不同,base是放在createWebHistory函数中传入
@@ -13,16 +13,24 @@ import { appRoutes } from './routes/index';
  */
 
 const router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHistory("/"),
   routes: [
     {
-      path: '/',
-      redirect: 'login',
+      path: "/",
+      redirect: "login",
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/login/index.vue'),
+      path: "/login",
+      name: "login",
+      component: () => import("@/views/login/index.vue"),
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: "/home",
+      name: "home",
+      component: () => import("@/views/home/index.vue"),
       meta: {
         requiresAuth: false,
       },

@@ -19,6 +19,7 @@
           </div>
         </a-layout-sider>
         <a-layout class="layout-content" :style="paddingStyle">
+          <TabBar />
           <a-layout-content>
             <PageLayout />
           </a-layout-content>
@@ -33,7 +34,8 @@ import { ref, computed, watch, provide } from "vue";
 // import { useRouter, useRoute } from 'vue-router';
 import { useAppStore } from "@/store";
 import NavBar from "@/components/navbar/index.vue";
-import Menu from '@/components/menu/index.vue';
+import Menu from "@/components/menu/index.vue";
+import TabBar from "@/components/tab-bar/index.vue";
 // import usePermission from '@/hooks/permission';
 // import useResponsive from '@/hooks/responsive';
 import PageLayout from "./page-layout.vue";
@@ -61,7 +63,7 @@ const paddingStyle = computed(() => {
     renderMenu.value && !hideMenu.value
       ? { paddingLeft: `${menuWidth.value}px` }
       : {};
-  const paddingTop = { paddingTop: '60px' } 
+  const paddingTop = { paddingTop: "60px" };
   return { ...paddingLeft, ...paddingTop };
 });
 

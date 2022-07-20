@@ -1,11 +1,13 @@
 <template>
   <div class="container">
     <div class="left-side">
-      <a-tree
-        :data="treeData"
-        :default-expanded-keys="['0-0-0']"
-        :default-selected-keys="['0-0-0', '0-0-1']"
-      />
+      <a-card :style="{ width: '360px' }">
+        <a-tree
+          :data="treeData"
+          :default-expanded-keys="['0-0-0']"
+          :default-selected-keys="['0-0-0', '0-0-1']"
+        />
+      </a-card>
     </div>
     <div class="right-side">
       <a-tree

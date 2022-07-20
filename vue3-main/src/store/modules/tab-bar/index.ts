@@ -1,26 +1,26 @@
-import type { RouteLocationNormalized } from 'vue-router';
-import { defineStore } from 'pinia';
-import { TabBarState, TagProps } from './types';
+import type { RouteLocationNormalized } from "vue-router";
+import { defineStore } from "pinia";
+import { TabBarState, TagProps } from "./types";
 
 const formatTag = (route: RouteLocationNormalized): TagProps => {
   const { name, meta, fullPath, query } = route;
   return {
-    title: meta.locale || '',
+    title: meta.locale || "",
     name: String(name),
     fullPath,
     query,
   };
 };
 
-const useAppStore = defineStore('tabBar', {
+const useAppStore = defineStore("tabBar", {
   state: (): TabBarState => ({
     cacheTabList: new Set(),
     tagList: [
       // Set the first element dynamically as needed
       {
-        title: 'menu.dashboard.workplace',
-        name: 'Workplace',
-        fullPath: '/dashboard/workplace',
+        title: "首页",
+        name: "home",
+        fullPath: "/home",
       },
     ],
   }),

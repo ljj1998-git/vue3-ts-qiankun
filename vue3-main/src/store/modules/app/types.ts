@@ -1,8 +1,9 @@
-import type { RouteRecordNormalized } from 'vue-router';
+import type { RouteRecordNormalized } from "vue-router";
 
 export interface AppState {
   isLogin: Boolean; // true/登陆 false/注册
   systems: Array<any>;
+  menus: Array<any>;
 
   theme: string;
   colorWeak: boolean;
@@ -17,5 +18,5 @@ export interface AppState {
   tabBar: boolean;
   menuFromServer: boolean;
   serverMenu: RouteRecordNormalized[];
-  [key: string]: unknown;
+  // [key: string]: unknown;
 }
